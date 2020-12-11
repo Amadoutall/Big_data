@@ -7,7 +7,6 @@
 from pyspark import SparkContext,SparkConf
 
 # Creation de la session sparkContext
-
 conf= SparkConf().setAppName("collect").setMaster("local[*]")
 sc = SparkContext(conf=conf)
 # importation du fichier sample.txt
