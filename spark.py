@@ -4,21 +4,24 @@
 # BAMBOU Regis Aymar
 
 # import package
-from pyspark import SparkContext
+from pyspark import SparkContext,SparkConf
 
 # Creation de la session sparkContext
-sc = SparkContext(master="local",appName="Spark Demo")
+
+conf= SparkConf().setAppName("collect").setMaster("local[*]")
+sc = SparkContext(conf=conf)
 # importation du fichier sample.txt
 file = sc.textFile("sample.txt")
+
 # regroupement mot par mot
 words = file.flatMap(lambda line : line.split(" "))
-wordsCounts= words.countByValue()
+wordsCounts= words.map(lambda line:(line,1)).reduceByKey(lambda a,b: a+b)
 
 # affichage
-for word, count in wordsCounts.items():
-    print("{} :{}".format(word,count))
+
+for word in wordsCounts.collect():
+    print("{} ".format(word))
 
 # exportation
-# rdd=sc.parallelize(wordsCounts)
-# rdd.coalesce(1).saveAsTextFile("base.txt")
+#wordsCounts.coalesce(1).saveAsTextFile('base.text')
 
