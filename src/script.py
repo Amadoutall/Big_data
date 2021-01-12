@@ -42,7 +42,7 @@ def pi_estimator_spark(n):
     # calcul de pi
 
     pi=(4*tot_in)/n
-    print("valeur de pi =",pi)
+    #print("valeur de pi =",pi)
     return pi
 
 
@@ -58,7 +58,7 @@ def pi_estimator_numpy(n):
     # calcul de pi
 
     pi=(4*tot_in)/n
-    print("valeur de pi =",pi)
+    #print("valeur de pi =",pi)
     return pi
 
 
@@ -76,7 +76,8 @@ def affichage_tab(n):
     
     aff={"N = "+str(n):["estimation pi","Ecart % Math.pi","Total time in seconds"],"spark":[pi_spark,pi_spark-math.pi,interval_spark],"numpy":[pi_numpy,pi_numpy-math.pi,interval_numpy]}
     aff=pd.DataFrame(aff)
-    display(aff)
+    print("\n")
+    print(aff)
     
 # cas pour n=100000
 n=100000
