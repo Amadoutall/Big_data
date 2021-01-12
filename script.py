@@ -2,9 +2,9 @@
 """
 Created on Fri Jan  8 22:57:33 2021
 
-@author: Amadou tall
+@author: Amadou tall, Régis bambou
 """
-# import package
+# importation des packages
 import findspark
 findspark.init("C:/spark")
 
@@ -78,11 +78,15 @@ def affichage_tab(n):
     aff=pd.DataFrame(aff)
     display(aff)
     
-
+# cas pour n=100000
 n=100000
 random.seed(135)
 affichage_tab(n)
 
+# cas pour n=1000000
+n=1000000
+random.seed(135)
+affichage_tab(n)
 
 sc.stop()
 
